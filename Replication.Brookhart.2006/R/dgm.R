@@ -14,6 +14,9 @@
 #'
 #' @param seed The seed used to generate a dataset.
 #' @param nobs The number of observations of the generated dataset.
+#' @param sd_X1 The standard deviation of covariate X1.
+#' @param sd_X2 The standard deviation of covariate X2.
+#' @param sd_X3 The standard deviation of covariate X3.
 #' @param beta0 The intercept of the model for the conditional mean of exposure A on a log-scale.
 #' @param beta1 The conditional association between covariate X1 and exposure A on a log-scale.
 #' @param beta2 The conditional association between covariate X2 and exposure A on a log-scale.
@@ -29,6 +32,9 @@
 #' @return The function returns a simulated dataset containing a dichotomous exposure, an outcome with a Poisson distribution, and continuous independent confounders. Both simulation experiment 1 and experiment 2 of the manuscript employ the same data-generating process.
 gen_data <- function(seed,
                      nobs,
+                     sd_X1,
+                     sd_X2,
+                     sd_X3,
                      beta0,
                      beta1,
                      beta2,
@@ -43,9 +49,9 @@ gen_data <- function(seed,
   set.seed(seed)
 
   # Generate covariates
-  X1 <- rnorm(nobs)
-  X2 <- rnorm(nobs)
-  X3 <- rnorm(nobs)
+  X1 <- rnorm(nobs, mean = 0, sd = sd_X1)
+  X2 <- rnorm(nobs, mean = 0, sd = sd_X2)
+  X3 <- rnorm(nobs, mean = 0, sd = sd_X3)
 
   # Genarate exposure A
   cond_mean_A <- pnorm(beta0 + X1 * beta1 + X2 * beta2 + X3 * beta3)

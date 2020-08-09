@@ -7,6 +7,9 @@
 gen_data(
   seed,
   nobs,
+  sd_X1,
+  sd_X2,
+  sd_X3,
   beta0,
   beta1,
   beta2,
@@ -23,6 +26,12 @@ gen_data(
 \item{seed}{The seed used to generate a dataset.}
 
 \item{nobs}{The number of observations of the generated dataset.}
+
+\item{sd_X1}{The standard deviation of covariate X1.}
+
+\item{sd_X2}{The standard deviation of covariate X2.}
+
+\item{sd_X3}{The standard deviation of covariate X3.}
 
 \item{beta0}{The intercept of the model for the conditional mean of exposure A on a log-scale.}
 
