@@ -60,7 +60,7 @@ gen_data <- function(seed,
   # Generate outcome Y
   cond_mean_Y <- exp(alpha0 + trans(X1) * alpha1 + X2 * alpha2 +
                        X3 * alpha3 + A * alpha4)
-  Y  <- rpois(nobs, cond_mean_Y)
+  Y  <- rpois(n = nobs, lambda = cond_mean_Y)
 
   # Store as dataframe
   out_df <- data.frame(Y = Y, A = A, X1 = X1, X2 = X2, X3 = X3)
