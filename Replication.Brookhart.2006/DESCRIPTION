@@ -14,6 +14,10 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: bookdown,
-    here
+    splines, 
+    Hmisc,
+    data.table,
+    simsalapar,
+    xtable
 Suggests: devtools,
     git2r
