@@ -139,11 +139,6 @@ experiment2_single_rep <- function(datagen_scenario,
   prop_score <- estimate_ps(ps_model_covs = ps_model_covs,
                       data = data)
 
-  # Estimate relative risk from quantiles:
-  quantiles              <- c(which(abs(data$X1 - quantile(data$X1, probs = 0.25, names = F))==min(abs(data$X1 - quantile(data$X1, probs = 0.25, names = F)))),
-                              which(abs(data$X1 - quantile(data$X1, probs = 0.75, names = F))==min(abs(data$X1 - quantile(data$X1, probs = 0.75, names = F)))))
-  relative_risk_exposure <- prop_score$PS[quantiles[2]]/prop_score$PS[quantiles[1]]
-
   # Estimate outcome model
   effect_crude     <- glm(Y ~ A, data = data, family = poisson)$coefficients["A"]
   effect_splines   <- estimate_effect_spline(PS = prop_score$PS,
@@ -151,8 +146,10 @@ experiment2_single_rep <- function(datagen_scenario,
   effect_quintiles <- estimate_effect_quintiles(PS = prop_score$PS,
                                                 data = data)
 
-  results <- data.table::data.table(effect_crude = effect_crude, effect_splines = effect_splines$effect_A, c_stat = prop_score$cstat_ps,
-                                    effect_quintiles = effect_quintiles$effectA, relative_risk_exposure = relative_risk_exposure)
+  results <- data.table::data.table(effect_crude = effect_crude,
+                                    effect_splines = effect_splines$effect_A,
+                                    c_stat = prop_score$cstat_ps,
+                                    effect_quintiles = effect_quintiles$effect_A)
 
   warnings <- data.table::data.table(ps_warning = as.character(prop_score$warning),
                                      splines_warning = as.character(effect_splines$warning),
