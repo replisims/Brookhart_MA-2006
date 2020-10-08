@@ -25,11 +25,13 @@ source("./analysis/simulation/graphs.R")
 # Execute simstudy ----
 #------------------------------------------------------------------------------#
 
-# Main analysis experiment 1
+# Set repetitions and seeds
 rep <- 1000
 all_seeds <- get_seeds(rep = rep)
 
-apply(main_scenarios_1,
+
+# Main analysis experiment 1
+apply(scenarios_1_main,
       MARGIN = 1,
       FUN = run_scenario,
       ps_model_covs = ps_covs_1,
@@ -38,6 +40,7 @@ apply(main_scenarios_1,
       function_experiment = experiment1_single_rep,
       filepath = "./analysis/data/raw_data/experiment_1_main/")
 
+# Sensitivity analysis experiment 1
 apply(sensitivity_1,
       MARGIN = 1,
       FUN = run_scenario,
@@ -47,7 +50,8 @@ apply(sensitivity_1,
       function_experiment = experiment1_single_rep,
       filepath = "./analysis/data/raw_data/experiment_1_sensitivity/")
 
-apply(main_scenarios_2,
+# Main analysis experiment 2
+apply(scenarios_2_main,
       MARGIN = 1,
       FUN = run_scenario,
       ps_model_covs = "X1",
@@ -60,11 +64,8 @@ apply(main_scenarios_2,
 #------------------------------------------------------------------------------#
 # Summarize results into tables ----
 #------------------------------------------------------------------------------#
-# Make sure to use correct values for important parameters
-alpha4 <- 0.5
-
 # Functions that produce tables as in original manuscript (latex format)
-
+alpha4 <- 0.5 # Make sure to use correct values for important parameters
 create_table1()
 create_table2()
 create_table3()
@@ -73,15 +74,13 @@ create_table3()
 # Visualisations ----
 #------------------------------------------------------------------------------#
 # Make sure key parameters are set to correct values
-
-rep <- 1000
-alpha1 <- exp(seq(0, 0.2, by = 0.01)) # exponentiate values to obtain RRs
 alpha4 <- 0.5
-beta1  <- exp(seq(0, 1.25, by = 0.05))
 
 # Functions that produce figures similar to original manuscript. Figures are
 # saved as png files in ./analysis/figures/
 
-create_figure2()
-create_figure3()
-create_figure4()
+create_figure2(output = scenarios_2_main)
+create_figure3(output = scenarios_2_main,
+               alpha4 = alpha4)
+create_figure4(output = scenarios_2_main,
+               alpha4 = alpha4)

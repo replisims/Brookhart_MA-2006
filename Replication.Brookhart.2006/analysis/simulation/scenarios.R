@@ -29,7 +29,7 @@ beta2  <- 0
 beta3  <- 0.75
 
 # Scenario grid main analysis
-main_scenarios_1 <- expand.grid(nobs = nobs,
+scenarios_1_main <- expand.grid(nobs = nobs,
                                 sd_X1 = sd_X1,
                                 sd_X2 = sd_X2,
                                 sd_X3 = sd_X3,
@@ -43,7 +43,7 @@ main_scenarios_1 <- expand.grid(nobs = nobs,
                                 beta2 = beta2,
                                 beta3 = beta3)
 
-main_scenarios_1$scen_num <- seq(1, nrow(main_scenarios_1), by = 1)
+scenarios_1_main$scen_num <- seq(1, nrow(scenarios_1_main), by = 1)
 
 # Scenario grid sensitivity analyses
 default <- data.frame(nobs = 500, sd_X1 = sd_X1, sd_X2 = sd_X2, sd_X3 = sd_X3,
@@ -87,7 +87,7 @@ beta0  <- 0   # Not reported in manuscript
 beta1  <- seq(0, 1.25, by = 0.05)
 
 # Scenario grid main analysis
-main_scenarios_2 <- expand.grid(nobs = nobs,
+scenarios_2_main <- expand.grid(nobs = nobs,
                                 sd_X1 = sd_X1,
                                 sd_X2 = 0,
                                 sd_X3 = 0,
@@ -100,4 +100,4 @@ main_scenarios_2 <- expand.grid(nobs = nobs,
                                 beta1 = beta1,
                                 beta2 = 0,
                                 beta3 = 0)
-main_scenarios_2$scen_num <- seq(1, nrow(main_scenarios_2), by = 1)
+scenarios_2_main$scen_num <- seq(1, nrow(scenarios_2_main), by = 1)

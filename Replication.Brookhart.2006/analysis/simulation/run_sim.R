@@ -16,7 +16,7 @@
 # experiment 1 and experiment 2
 
 get_seeds <- function(rep){
-  n_seed <- nrow(main_scenarios_1) * rep
+  n_seed <- nrow(scenarios_1_main) * rep
   set.seed(08131)
   seeds_main_1 <- sample(1:1e8,
                          size = n_seed,
@@ -28,7 +28,7 @@ get_seeds <- function(rep){
                                 size = n_seed,
                                 replace = FALSE)
 
-  n_seed <- nrow(main_scenarios_2) * rep
+  n_seed <- nrow(scenarios_2_main) * rep
   set.seed(08133)
   seeds_main_2 <- sample(1:1e8,
                          size = n_seed,
