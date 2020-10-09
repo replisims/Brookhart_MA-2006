@@ -263,14 +263,13 @@ n = 500 &  &  &  &  &  &  &  &  \\
 \subsection{Replication of result figures}
 
 ```{r, out.width='450pt', fig.cap= "Replication of Figure 2 in original manuscript. Results are very similar."}
-knitr::include_graphics("../analysis/figures/Figure2.PNG")
-# Use knitr::include_graphics("../figures/Figure2.PNG") within compendium
+knitr::include_graphics("../../figures/Figure2.PNG")
 ```
 ```{r, out.width='450pt', fig.cap= "Replication of Figure 3 in original manuscript. Results are very similar."}
-knitr::include_graphics("../analysis/figures/Figure3.PNG")
+knitr::include_graphics("../../figures/Figure3.PNG")
 ```
 ```{r, out.width='450pt', fig.cap= "Replication of Figure 4 in original manuscript. The left panel is different from the original manuscript."}
-knitr::include_graphics("../analysis/figures/Figure4.PNG")
+knitr::include_graphics("../../figures/Figure4.PNG")
 ```
 
 \FloatBarrier

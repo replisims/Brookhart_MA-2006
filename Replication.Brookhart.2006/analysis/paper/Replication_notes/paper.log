@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.6)  8 OCT 2020 18:32
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.6)  9 OCT 2020 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1121,12 +1121,12 @@ Overfull \hbox (49.86873pt too wide) in paragraph at lines 590--629
  []
 
 [8] [9] [10]
-File: ../analysis/figures/Figure2.png Graphic file (type bmp)
-<../analysis/figures/Figure2.png>
-File: ../analysis/figures/Figure3.png Graphic file (type bmp)
-<../analysis/figures/Figure3.png>
-File: ../analysis/figures/Figure4.png Graphic file (type bmp)
-<../analysis/figures/Figure4.png>
+File: ../../figures/Figure2.png Graphic file (type bmp)
+<../../figures/Figure2.png>
+File: ../../figures/Figure3.png Graphic file (type bmp)
+<../../figures/Figure3.png>
+File: ../../figures/Figure4.png Graphic file (type bmp)
+<../../figures/Figure4.png>
 [11
 
 ] [12] [13] [14] [15] [16] [17]
@@ -1143,7 +1143,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  ) 
 Here is how much of TeX's memory you used:
  23565 strings out of 479465
- 474812 string characters out of 5880313
+ 474626 string characters out of 5880313
  831579 words of memory out of 5000000
  42458 multiletter control sequences out of 15000+600000
  539544 words of font info for 73 fonts, out of 8000000 for 9000
