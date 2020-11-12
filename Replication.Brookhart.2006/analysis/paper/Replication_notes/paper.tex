@@ -37,15 +37,15 @@ particular when formulas were provided it was straightforward to
 implement the intended approach. Furthermore, the data-generating
 mechanism was depicted in a figure, which was helpful in understanding
 the simulation set up. The main difficulty of the replication was that
-main results were presented as figures, which made it more difficult to
-compare that results were replicated (i) because it is more difficult to
-compare than numbers in a table and (ii) because the approach to
-creating the figure was not fully described (as it is irrelevant to the
-paper itself). Specific software implementations were not described
-clearly, but this did not hamper replicability of results. For example,
-no packages in R were referenced for estimation of the splines or
-c-statistic (which makes sense given the year of publication). Results
-of the replication are presented below.
+some of the results were presented as figures, which made it more
+difficult to compare that results were replicated (i) because it is more
+difficult to compare than numbers in a table and (ii) because the
+approach to creating the figure was not fully described (as it is
+irrelevant to the paper itself). Specific software implementations were
+not described clearly, but this did not hamper replicability of results.
+For example, no packages in R were referenced for estimation of the
+splines or c-statistic (which makes sense given the year of
+publication). Results of the replication are presented below.
 
 \vskip 2em
 
@@ -457,13 +457,20 @@ for someone with a moderately small value of X\_1.'' and ``The increase
 in variance did not depend on the strength of association between X1 and
 Y (data not presented)''.\strut
 \end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
-We derived the values for the x-axis as
-pnorm(beta1\emph{qnorm(.75))/pnorm(beta1}qnorm(.25)) or
-pnorm(alpha1\emph{qnorm(.75))/pnorm(alpha1}qnorm(.25)). For Figure 2, we
-took the variance over all scenarios with the same beta1 value, but
-possibly with different alpha1 values.\strut
+We derived the values for the x-axis as pnorm(beta1 x
+qnorm(.75))/pnorm(beta1 x qnorm(.25)) or pnorm(alpha1 x
+qnorm(.75))/pnorm(alpha1 x qnorm(.25)). For Figure 2, we took the
+variance over all scenarios with the same beta1 value, but possibly with
+different alpha1 values.\strut
 \end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
 \strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
+------\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.33\columnwidth}\raggedright
 The manuscript stated ``the exposure effects were estimated by adjusting
@@ -480,6 +487,13 @@ splines::bs(PS, knots = quantile(PS, probs = c(0.25, 0.5, 0.75)))\strut
 Default implementation (Perperoglou et al. 2019)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
+------\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 For experiment 2, the methods section mentioned that adjustment for the
 propensity score was only through the spline function, yet the results
 section fitted the quintile approach as well.\strut
@@ -489,14 +503,28 @@ section fitted the quintile approach as well.\strut
 Results were not similar to the original manuscript.\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.33\columnwidth}\raggedright
-For experiment 2, the intercept values for covariate X1 are not
-mentioned explicitly\strut
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
+------\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
+For experiment 2, the intercept values for the generation of A and Y are
+not mentioned explicitly\strut
 \end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
 We used the values used in experiment 1\strut
 \end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
 The paragraph explaining the data-generating mechanism starts with
 ``Both simulation experiments employed the same basic data-generating
 process''\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
+------\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.33\columnwidth}\raggedright
 The manuscript stated: ``All simulations were performed in R, version
@@ -509,6 +537,13 @@ We assumed the authors referred to R scripts.\strut
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+--------\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright
+------\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 Not reported how C-statistic was estimated (but this is relatively
 unambiguous)\strut
 \end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
@@ -519,20 +554,20 @@ Used widely applied Hmisc package.\strut
 \bottomrule
 \end{longtable}
 
-\subsection{Replicating a figure}
+\subsection{Replicating figures}
 
-Replicating a Figure posed a small challenge. It is slightly more
-difficult to judge whether a Figure is replicated as compared to whether
-a Table is replicated (although the degree of variability between the
+Replication of a figure posed a small challenge. It is slightly more
+difficult to judge whether a figure is replicated as compared to whether
+a table is replicated (although the degree of variability between the
 replication and original might have been similar in our case, since we
 did not have access to seeds to replicate the original tables).\\
 Additionally, we used information from the original article only (no
 source code) and it is not likely that the procedure for creating the
-Figure is described in the manuscript (which would detract from the main
+figure is described in the manuscript (which would detract from the main
 message and waste words). Hence, the most researchers degrees of freedom
-were spend on creating Figure 2-4. We originally created a Figure for
+were spend on creating Figure 2-4. We originally created a figure for
 fixed values of alpha1 or beta1, instead of averaging over all possible
-other values, which showed larger variability than the original Figure.
+other values, which showed larger variability than the original figure.
 Also, before we found the description in the results section, we used
 exponentiated values of the log-linear associations to obtain the
 relative risks.
@@ -593,7 +628,7 @@ n = 500 &  &  &  &  &  &  &  &  \\
  & & X1 & X2 & X3 & X1+X2 & X1+X3 & X2+X3 & X1+X2+X3 & None \\
  \hline
  & Original &  &  &  &  &  &  &  &  \\ 
-   Bias x 10 & 0.07 & 5.94 & 7.35 & 0.08 & 0 & 7.37 & 0.03 & 5.99 \\ 
+   & Bias x 10 & 0.07 & 5.94 & 7.35 & 0.08 & 0 & 7.37 & 0.03 & 5.99 \\ 
    & Variance x 10 & 0.3 & 0.24 & 0.49 & 0.21 & 0.44 & 0.4 & 0.33 & 0.4 \\ 
    & MSE x 10 & 0.3 & 3.78 & 5.88 & 0.22 & 0.44 & 5.82 & 0.33 & 3.98 \\ 
    & Decrease in the variance of X1 &  &  &  &  &  &  &  &  \\ 
@@ -669,20 +704,20 @@ n = 500 &  &  &  &  &  &  &  &  \\
 
 The manuscript by Brookhart and colleagues (Brookhart et al. 2006)
 provided a clear description of the simulation approach, which ensured
-that replication of the results was fully possible and relatively
+that replication of the results was nearly fully possible and relatively
 straightforward. The authors (likely) implemented default procedures and
 provided formulas and a figure to depict the data-generating mechanism,
 thereby capturing all relevant information.
 
 \subsection{Replicator degrees of freedom}
 
-The main ``guesses'' that we had to make were about specific
-implementations of the procedures. For example, for estimation of the
-cubic splines or construction of the x-axis of figures. These decisions
-likely have not had a large impact on the results. Making analysis code
-available (as is more common nowadays than back in 2006) would have
-resolved all issues.\\
-Reflecting on the replication process, we found the symmetrical
+The main guesses that we had to make were about specific implementations
+of the procedures. For example, for estimation of the cubic splines or
+construction of the x-axis of figures. These decisions likely have not
+had a large impact on the results. Making analysis code available (as is
+more common nowadays than back in 2006) would likely have resolved all
+issues.\\
+Reflecting on the replication process, we found the asymmetrical
 behaviour of our checks interesting. When we found a result similar to
 the maintext, we would continue programming the next part of the
 analysis. However, when we ran into a discrepancy, we tried different
@@ -697,6 +732,27 @@ draw the same conclusions based on the results. Figure 4 is the only
 aspect we could not fully replicate.
 
 \subsection{Comparison with independent replication team}
+
+The duo that performed an independent replication of the study was
+successful in replicating the study as well. A discussion of the
+replication process provided the following observations about reporting
+of simulation studies.\\
+First, describing procedures exactly in the order they are performed
+facilitates replication. In particular, Brookhart and colleagues
+presented some methods (for generation of figures) in ther results, and
+hence we sometimes had to go back and forth through the text while
+writing the replication code.\\
+Additionally, it is quite challenging for authors to address an audience
+with different expertises and skills (which is arguably quite diverse
+for simulations studies). For example, Brookhart and colleagues did not
+explicitly mention that propensity scores were estimated from a
+propensity score model. Different notation could have clarified this,
+but it is not always desirable to introduce mathematical notation,
+depending on the readership of a journal.\\
+Overall, it's been a helpful experience to replicate a simulation study
+solely from the main text in an article that provided insight into the
+choices regarding and consequences of the way methods and results are
+presented.
 
 \section{Contributions}
 
@@ -795,6 +851,7 @@ research compendium which can be found in the following git repository
 ## +-- Lato-Italic.ttf
 ## +-- Lato-Regular.ttf
 ## +-- paper.log
+## +-- paper.pdf
 ## +-- paper.Rmd
 ## +-- paper.tex
 ## +-- references.bib
@@ -818,7 +875,7 @@ research compendium which can be found in the following git repository
 
 \subsubsection*{Reproducibility Information}
 
-This report was last updated on 2020-10-09 11:28:11. The simulation
+This report was last updated on 2020-11-11 20:54:10. The simulation
 replication was conducted using the following computational environment
 and dependencies:
 
@@ -835,24 +892,25 @@ and dependencies:
 ##  collate  Dutch_Netherlands.1252      
 ##  ctype    Dutch_Netherlands.1252      
 ##  tz       Europe/Berlin               
-##  date     2020-10-09                  
+##  date     2020-11-11                  
 ## 
 ## - Packages -------------------------------------------------------------------
 ##  package        * version    date       lib
 ##  assertthat       0.2.1      2019-03-21 [1]
-##  backports        1.1.7      2020-05-13 [1]
+##  backports        1.2.0      2020-11-02 [1]
 ##  callr            3.4.3      2020-03-28 [1]
-##  cli              2.0.2      2020-02-28 [1]
+##  cli              2.1.0      2020-10-12 [1]
 ##  crayon           1.3.4      2017-09-16 [1]
 ##  desc             1.2.0      2018-05-01 [1]
 ##  devtools         2.3.1      2020-07-21 [1]
-##  digest           0.6.25     2020-02-23 [1]
-##  dplyr          * 0.8.5      2020-03-07 [1]
+##  digest           0.6.27     2020-10-24 [1]
+##  dplyr          * 1.0.2      2020-08-18 [1]
 ##  ellipsis         0.3.1      2020-05-15 [1]
 ##  evaluate         0.14       2019-05-28 [1]
 ##  fansi            0.4.1      2020-01-08 [1]
 ##  fs               1.4.2      2020-06-30 [1]
-##  glue             1.4.1      2020-05-13 [1]
+##  generics         0.1.0      2020-10-31 [1]
+##  glue             1.4.2      2020-08-27 [1]
 ##  htmltools        0.5.0      2020-06-16 [1]
 ##  knitr          * 1.29       2020-06-23 [1]
 ##  lifecycle        0.2.0      2020-03-06 [1]
@@ -866,21 +924,20 @@ and dependencies:
 ##  processx         3.4.3      2020-07-05 [1]
 ##  ps               1.3.3      2020-05-08 [1]
 ##  purrr            0.3.4      2020-04-17 [1]
-##  R6               2.4.1      2019-11-12 [1]
-##  Rcpp             1.0.5      2020-07-06 [1]
+##  R6               2.5.0      2020-10-28 [1]
 ##  remotes          2.2.0      2020-07-21 [1]
 ##  RepliSimReport   0.0.0.9000 2020-09-28 [1]
-##  rlang            0.4.7      2020-07-09 [1]
+##  rlang            0.4.8      2020-10-08 [1]
 ##  rmarkdown        2.3        2020-06-18 [1]
 ##  rprojroot        1.3-2      2018-01-03 [1]
 ##  sessioninfo      1.1.1      2018-11-05 [1]
-##  stringi          1.4.6      2020-02-17 [1]
+##  stringi          1.5.3      2020-09-09 [1]
 ##  stringr          1.4.0      2019-02-10 [1]
 ##  testthat         2.3.2      2020-03-02 [1]
-##  tibble           3.0.3      2020-07-10 [1]
-##  tidyselect       1.0.0      2020-01-27 [1]
+##  tibble           3.0.4      2020-10-12 [1]
+##  tidyselect       1.1.0      2020-05-11 [1]
 ##  usethis          1.6.1      2020-04-29 [1]
-##  vctrs            0.3.2      2020-07-15 [1]
+##  vctrs            0.3.4      2020-08-29 [1]
 ##  withr            2.2.0      2020-04-20 [1]
 ##  xfun             0.16       2020-07-24 [1]
 ##  xtable         * 1.8-4      2019-04-21 [1]
@@ -921,7 +978,7 @@ and dependencies:
 ##  CRAN (R 3.6.3)                           
 ##  CRAN (R 3.6.3)                           
 ##  CRAN (R 3.6.3)                           
-##  CRAN (R 3.6.2)                           
+##  CRAN (R 3.6.3)                           
 ##  CRAN (R 3.6.3)                           
 ##  CRAN (R 3.6.3)                           
 ##  CRAN (R 3.6.3)                           
@@ -941,7 +998,7 @@ The current Git commit details are:
 \begin{verbatim}
 ## Local:    master C:/Users/Eigenaar/Documents/GitHub/Brookhart_MA-2006
 ## Remote:   master @ origin (https://github.com/replisims/Brookhart_MA-2006.git)
-## Head:     [168f1e5] 2020-10-08: Add report
+## Head:     [1876f26] 2020-10-09: minor improvements
 \end{verbatim}
 
 

@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.6)  9 OCT 2020 11:28
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.10.23)  11 NOV 2020 20:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **paper.tex
 (./paper.tex
-LaTeX2e <2020-10-01>
+LaTeX2e <2020-10-01> patch level 1
 L3 programming layer <2020-10-05> xparse <2020-03-03>
 (c:/Users/Eigenaar/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cl
 s
@@ -25,7 +25,7 @@ File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-\@input{"defs.aux"}
+\@input{defs.aux}
 \openout2 = `defs.aux'.
 
 (./defs.tex
@@ -138,14 +138,7 @@ LaTeX Info: Redefining \addtolength on input line 81.
 )
 (c:/Users/Eigenaar/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/eso-pic/eso-pic
 .sty
-Package: eso-pic 2020/09/27 v2.0i eso-pic (RN)
-
-(c:/Users/Eigenaar/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-l
-tx.sty
-Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
-ge
-with kernel methods
-)
+Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen165
 \ESO@tempdimb=\dimen166
 
@@ -701,7 +694,7 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
 (c:/Users/Eigenaar/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvopt
 ions.sty
-Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen297
 \Hy@linkcounter=\count305
@@ -752,6 +745,13 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6372.
 Package hyperref Info: PDF/A mode OFF on input line 6377.
 LaTeX Info: Redefining \ref on input line 6417.
 LaTeX Info: Redefining \pageref on input line 6421.
+
+(c:/Users/Eigenaar/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-l
+tx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
 \Hy@abspage=\count310
 \c@Item=\count311
 \c@Hfootnote=\count312
@@ -1103,20 +1103,8 @@ File: se-ascii-print.def 2019/11/29 v1.12 stringenc: Printable ASCII characters
 
 ] [2
 
-] [3] [4] [5]
-Overfull \hbox (58.64883pt too wide) in paragraph at lines 460--465
-\TU/Lato-Regular.ttf(0)/m/n/10 pnorm(beta1\TU/Lato-Regular.ttf(0)/m/it/10 qnorm
-(.75))/pnorm(beta1\TU/Lato-Regular.ttf(0)/m/n/10 qnorm(.25)) 
- []
-
-
-Overfull \hbox (69.38385pt too wide) in paragraph at lines 460--465
-\TU/Lato-Regular.ttf(0)/m/n/10 pnorm(alpha1\TU/Lato-Regular.ttf(0)/m/it/10 qnor
-m(.75))/pnorm(alpha1\TU/Lato-Regular.ttf(0)/m/n/10 qnorm(.25)). 
- []
-
-[6] [7]
-Overfull \hbox (49.86873pt too wide) in paragraph at lines 590--629
+] [3] [4] [5] [6] [7]
+Overfull \hbox (10.92874pt too wide) in paragraph at lines 625--664
  [][] 
  []
 
@@ -1131,23 +1119,23 @@ File: ../../figures/Figure4.png Graphic file (type bmp)
 
 ] [12] [13] [14] [15] [16] [17]
 LaTeX Font Info:    Font shape `TU/UbuntuMono-Regular.ttf(0)/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 778.
+(Font)              scaled to size 8.99994pt on input line 834.
 [18] [19] 
 AED: lastpage setting LastPage
 [20] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 25695A5658DA42AE6DEC969C30017D60;1553.
+(rerunfilecheck)             Checksum: 85EF7862DB4DA7F63E7D0BA7C00BEDE9;1549.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23565 strings out of 479465
- 474626 string characters out of 5880313
- 831579 words of memory out of 5000000
+ 23566 strings out of 479466
+ 474641 string characters out of 5880329
+ 830512 words of memory out of 5000000
  42458 multiletter control sequences out of 15000+600000
  539544 words of font info for 73 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 83i,11n,92p,431b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,11n,92p,431b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on paper.pdf (20 pages).

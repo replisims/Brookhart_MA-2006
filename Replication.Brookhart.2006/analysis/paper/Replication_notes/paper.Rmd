@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 \maketitle <!--insert title-->
 
 \subsection*{Abstract}
-This report describes the replication of "Variable Selection for Propensity Score Models" by Brookhart et al. [@brookhart2006variable]. The original article provided clear descriptions of the simulation methods, which made it relatively easy to replicate the simulations. In particular when formulas were provided it was straightforward to implement the intended approach. Furthermore, the data-generating mechanism  was depicted in a figure, which was helpful in understanding the simulation set up. The main difficulty of the replication was that main results were presented as figures, which made it more difficult to compare that results were replicated (i) because it is more difficult to compare than numbers in a table and (ii) because the approach to creating the figure was not fully described (as it is irrelevant to the paper itself). Specific software implementations were not described clearly, but this did not hamper replicability of results. For example, no packages in R were referenced for estimation of the splines or c-statistic (which makes sense given the year of publication). Results of the replication are presented below.
+This report describes the replication of "Variable Selection for Propensity Score Models" by Brookhart et al. [@brookhart2006variable]. The original article provided clear descriptions of the simulation methods, which made it relatively easy to replicate the simulations. In particular when formulas were provided it was straightforward to implement the intended approach. Furthermore, the data-generating mechanism  was depicted in a figure, which was helpful in understanding the simulation set up. The main difficulty of the replication was that some of the results were presented as figures, which made it more difficult to compare that results were replicated (i) because it is more difficult to compare than numbers in a table and (ii) because the approach to creating the figure was not fully described (as it is irrelevant to the paper itself). Specific software implementations were not described clearly, but this did not hamper replicability of results. For example, no packages in R were referenced for estimation of the splines or c-statistic (which makes sense given the year of publication). Results of the replication are presented below.
 
 \vskip 2em
 
@@ -131,18 +131,23 @@ Wherever feasible multiple interpretations where implemented.
 
 | Issue| Replicator decision| Justification |
 |--------|--------|------|
-| It was unclear how the x-axes of Figure 3 and Figure 4 were derived. The results section of the manuscript stated "Because the parameter beta_1 in the probit model is not directly interpretable, we transform it into a ``relative risk’’ (relative exposure prevalence). This is done by computing the probability of treatment at the 75th percentile of X_1 and dividing it by the probability of treatment at the 25th percentile of X_1—in other words, the probability of treatment for someone with a moderately large value of X_1 divided by the probability of treatment for someone with a moderately small value of X_1." and "The increase in variance did not depend on the strength of association between X1 and Y (data not presented)". | We derived the values for the x-axis as pnorm(beta1*qnorm(.75))/pnorm(beta1*qnorm(.25)) or pnorm(alpha1*qnorm(.75))/pnorm(alpha1*qnorm(.25)). For Figure 2, we took the variance over all scenarios with the same beta1 value, but possibly with different alpha1 values. | 
+| It was unclear how the x-axes of Figure 3 and Figure 4 were derived. The results section of the manuscript stated "Because the parameter beta_1 in the probit model is not directly interpretable, we transform it into a ``relative risk’’ (relative exposure prevalence). This is done by computing the probability of treatment at the 75th percentile of X_1 and dividing it by the probability of treatment at the 25th percentile of X_1—in other words, the probability of treatment for someone with a moderately large value of X_1 divided by the probability of treatment for someone with a moderately small value of X_1." and "The increase in variance did not depend on the strength of association between X1 and Y (data not presented)". | We derived the values for the x-axis as pnorm(beta1 x qnorm(.75))/pnorm(beta1 x qnorm(.25)) or pnorm(alpha1 x qnorm(.75))/pnorm(alpha1 x qnorm(.25)). For Figure 2, we took the variance over all scenarios with the same beta1 value, but possibly with different alpha1 values. |  
+|--------|--------|------|  
 | The manuscript stated "the exposure effects were estimated by adjusting for the PS in a multivariable Poisson model of the outcome in which the effect of the estimated PS was flexibly modeled through a cubic regression spline with three interior knot points placed at quartiles of the estimated PS.". We were unsure how the cubic spline estimation was implemented. | This decision was non-fixed due to lack of subject-matter knowledge. We used the function bs() in splines package, with specifying three knots splines::bs(PS, knots = quantile(PS, probs = c(0.25, 0.5, 0.75))) | Default implementation [@perperoglou2019review]|  
+|--------|--------|------|
 | For experiment 2, the methods section mentioned that adjustment for the propensity score was only through the spline function, yet the results section fitted the quintile approach as well.  | | Results were not similar to the original manuscript.|   
-| For experiment 2, the intercept values for covariate X1 are not mentioned explicitly | We used the values used in experiment 1 | The paragraph explaining the data-generating mechanism starts with "Both simulation experiments employed the same basic data-generating process" |  
+|--------|--------|------|
+| For experiment 2, the intercept values for the generation of A and Y are not mentioned explicitly | We used the values used in experiment 1 | The paragraph explaining the data-generating mechanism starts with "Both simulation experiments employed the same basic data-generating process" |  
+|--------|--------|------|
 | The manuscript stated: "All simulations were performed in R, version 1.9.1 (16, 17), running on a Windows XP platform, using software created by one of the authors (M. A. B.)." Equivocal which additional software was used. | We assumed the authors referred to R scripts. | |  
+|--------|--------|------|
 | Not reported how C-statistic was estimated (but this is relatively unambiguous) | Hmisc::somers2(PS, data[,"exposure"])["C"]| Used widely applied Hmisc package.
 
 
 
-\subsection{Replicating a figure}
-Replicating a Figure posed a small challenge. It is slightly more difficult to judge whether a Figure is replicated as compared to whether a Table is replicated (although the degree of variability between the replication and original might have been similar in our case, since we did not have access to seeds to replicate the original tables).   
-Additionally, we used information from the original article only (no source code) and it is not likely that the procedure for creating the Figure is described in the manuscript (which would detract from the main message and waste words). Hence, the most researchers degrees of freedom were spend on creating Figure 2-4. We originally created a Figure for fixed values of alpha1 or beta1, instead of averaging over all possible other values, which showed larger variability than the original Figure. Also, before we found the description in the results section, we used exponentiated values of the log-linear associations to obtain the relative risks.
+\subsection{Replicating figures}
+Replication of a figure posed a small challenge. It is slightly more difficult to judge whether a figure is replicated as compared to whether a table is replicated (although the degree of variability between the replication and original might have been similar in our case, since we did not have access to seeds to replicate the original tables).   
+Additionally, we used information from the original article only (no source code) and it is not likely that the procedure for creating the figure is described in the manuscript (which would detract from the main message and waste words). Hence, the most researchers degrees of freedom were spend on creating Figure 2-4. We originally created a figure for fixed values of alpha1 or beta1, instead of averaging over all possible other values, which showed larger variability than the original figure. Also, before we found the description in the results section, we used exponentiated values of the log-linear associations to obtain the relative risks.
 
 \section{Results}
 
@@ -201,7 +206,7 @@ n = 500 &  &  &  &  &  &  &  &  \\
  & & X1 & X2 & X3 & X1+X2 & X1+X3 & X2+X3 & X1+X2+X3 & None \\
  \hline
  & Original &  &  &  &  &  &  &  &  \\ 
-   Bias x 10 & 0.07 & 5.94 & 7.35 & 0.08 & 0 & 7.37 & 0.03 & 5.99 \\ 
+   & Bias x 10 & 0.07 & 5.94 & 7.35 & 0.08 & 0 & 7.37 & 0.03 & 5.99 \\ 
    & Variance x 10 & 0.3 & 0.24 & 0.49 & 0.21 & 0.44 & 0.4 & 0.33 & 0.4 \\ 
    & MSE x 10 & 0.3 & 3.78 & 5.88 & 0.22 & 0.44 & 5.82 & 0.33 & 3.98 \\ 
    & Decrease in the variance of X1 &  &  &  &  &  &  &  &  \\ 
@@ -276,16 +281,21 @@ knitr::include_graphics("../../figures/Figure4.PNG")
 \section{Discussion}
 
 \subsection{Replicability}
-The manuscript by Brookhart and colleagues [@brookhart2006variable] provided a clear description of the simulation approach, which ensured that replication of the results was fully possible and relatively straightforward. The authors (likely) implemented default procedures and provided formulas and a figure to depict the data-generating mechanism, thereby capturing all relevant information.
+The manuscript by Brookhart and colleagues [@brookhart2006variable] provided a clear description of the simulation approach, which ensured that replication of the results was nearly fully possible and relatively straightforward. The authors (likely) implemented default procedures and provided formulas and a figure to depict the data-generating mechanism, thereby capturing all relevant information.
 
 \subsection{Replicator degrees of freedom}
-The main "guesses" that we had to make were about specific implementations of the procedures. For example, for estimation of the cubic splines or construction of the x-axis of figures. These decisions likely have not had a large impact on the results. Making analysis code available (as is more common nowadays than back in 2006) would have resolved all issues.  
-Reflecting on the replication process, we found the symmetrical behaviour of our checks interesting. When we found a result similar to the maintext, we would continue programming the next part of the analysis. However, when we ran into a discrepancy, we tried different implementations (like explained in section 2.6) to obtain the original result.
+The main guesses that we had to make were about specific implementations of the procedures. For example, for estimation of the cubic splines or construction of the x-axis of figures. These decisions likely have not had a large impact on the results. Making analysis code available (as is more common nowadays than back in 2006) would likely have resolved all issues.  
+Reflecting on the replication process, we found the asymmetrical behaviour of our checks interesting. When we found a result similar to the maintext, we would continue programming the next part of the analysis. However, when we ran into a discrepancy, we tried different implementations (like explained in section 2.6) to obtain the original result.
 
 \subsection{Equivalence of results}
 By and large, the replicated results are equivalent to the original results. The orders of magnitude and directions are similar and we would draw the same conclusions based on the results. Figure 4 is the only aspect we could not fully replicate. 
 
 \subsection{Comparison with independent replication team}
+The duo that performed an independent replication of the study was successful in replicating the study as well. A discussion of the replication process provided the following observations about reporting of simulation studies.  
+First, describing procedures exactly in the order they are performed facilitates replication. In particular, Brookhart and colleagues presented some methods (for generation of figures) in ther results, and hence we sometimes had to go back and forth through the text while writing the replication code.  
+Additionally, it is quite challenging for authors to address an audience with different expertises and skills (which is arguably quite diverse for simulations studies). For example, Brookhart and colleagues did not explicitly mention that propensity scores were estimated from a propensity score model. Different notation could have clarified this, but it is not always desirable to introduce mathematical notation, depending on the readership of a journal.  
+Overall, it's been a helpful experience to replicate a simulation study solely from the main text in an article that provided insight into the choices regarding and consequences of the way methods and results are presented.
+
 
 \section{Contributions}
 Authors made the following contributions according to the CRediT framework https://casrai.org/credit/
